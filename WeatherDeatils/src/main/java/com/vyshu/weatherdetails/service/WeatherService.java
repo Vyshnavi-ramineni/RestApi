@@ -1,35 +1,50 @@
 package com.vyshu.weatherdetails.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.IOException;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.vyshu.weatherdetails.RestConfigration;
+import com.vyshu.weatherdetails.exception.GenericException;
 
 @Service
 public class WeatherService {
-	
-	public  String weatherDetails(String city) {
+	@Autowired
+	RestTemplate restTemplate;
+	@Autowired
+	RestConfigration restConfiguration;
+	org.slf4j.Logger logger = LoggerFactory.getLogger(WeatherService.class);
+	public  String weatherDetails(String city)  {
 		String response = null;
 		try {
-	RestTemplate rt = new RestTemplate();
-	
-	String url =  "https://weatherdbi.herokuapp.com/data/weather";
-     response =  rt.getForObject(url+"/"+city,String.class);
-     System.out.print(response);
-	
-	}catch(Exception e) {
-		e.printStackTrace();
-	}
+		response =  restTemplate.getForObject(restConfiguration.getWeatherURL()+"/"+city,String.class);
+		 logger.info(response);
+		 JsonObject responseObject = new Gson().fromJson(response, JsonObject.class);
+		  String s = responseObject.get(response).getAsString();
+		  logger.info(s);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return response ;
-	} 
+	}
+	
+	 public JsonObject weather(JsonObject payload)  {
+		 JsonObject Response = null;
+		 try {
+		 Response = payload.get("currentConditions").getAsJsonObject();
+		 }catch(Exception e) {
+			 e.printStackTrace();
+			 logger.error(e.getMessage());
+				throw new GenericException();
+		 }
+		return Response;
+		
+	}
 	
 	}
