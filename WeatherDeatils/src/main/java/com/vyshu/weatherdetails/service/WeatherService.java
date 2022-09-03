@@ -27,7 +27,7 @@ public class WeatherService {
 		response =  restTemplate.getForObject(restConfiguration.getWeatherURL()+"/"+city,String.class);
 		 logger.info(response);
 		 JsonObject responseObject = new Gson().fromJson(response, JsonObject.class);
-		  String s = responseObject.get(response).getAsString();
+		  String s = responseObject.get("region").getAsString();
 		  logger.info(s);
 		}catch(Exception e) {
 			e.printStackTrace();
