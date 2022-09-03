@@ -1,6 +1,7 @@
 package com.vyshu.weatherdetails.model;
 
 public final class contant_author {
+	
 	private String email;
 	private String auth_note;
 	public String getEmail() {

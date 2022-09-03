@@ -22,7 +22,6 @@ public class RestConfigration {
 		public RestTemplate restTemplate() {
 			return new RestTemplate();
 		}
-
-	}
+}
 
 

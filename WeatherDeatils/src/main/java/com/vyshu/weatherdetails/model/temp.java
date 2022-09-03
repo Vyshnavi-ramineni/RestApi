@@ -1,6 +1,7 @@
 package com.vyshu.weatherdetails.model;
 
 public class temp {
+	
 	private String c;
 	private String f;
 	public String getC() {

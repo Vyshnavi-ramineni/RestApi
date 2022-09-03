@@ -1,6 +1,7 @@
 package com.vyshu.weatherdetails.model;
 
 public class wind {
+	
 	private String km;
 	private String mile;
 	public String getKm() {

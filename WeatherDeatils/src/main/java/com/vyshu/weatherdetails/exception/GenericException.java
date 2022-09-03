@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.vyshu.weatherdetails.utility.WeatherConstants;
 
-
 public class GenericException extends RuntimeException{
 	private static final JsonObject jsonObject= new JsonObject();
     public GenericException() {

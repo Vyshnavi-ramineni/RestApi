@@ -20,6 +20,7 @@ public class WeatherService {
 	@Autowired
 	RestConfigration restConfiguration;
 	org.slf4j.Logger logger = LoggerFactory.getLogger(WeatherService.class);
+	
 	public  String weatherDetails(String city)  {
 		String response = null;
 		try {

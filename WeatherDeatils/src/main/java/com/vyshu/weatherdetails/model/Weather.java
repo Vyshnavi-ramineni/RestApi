@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Weather {
+	
 	private String region;
 	private currentConditions currentCondition;
 	private List<next_days> next_days;

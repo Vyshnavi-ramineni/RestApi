@@ -1,6 +1,7 @@
 package com.vyshu.weatherdetails.model;
 
 public class next_days {
+	
 	private String day;
 	private String comment;
 	private max_tmp max_tmp;

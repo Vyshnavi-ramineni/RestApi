@@ -1,6 +1,7 @@
 package com.vyshu.weatherdetails.model;
 
 public class currentConditions {
+	
 private String dayhours;
 private temp temp;
 private String precip;

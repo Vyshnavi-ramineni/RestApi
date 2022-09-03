@@ -1,7 +1,6 @@
 package com.vyshu.weatherdetails.utility;
 
 public class WeatherConstants {
-
 	public static final String ERROR_MESSAGE = "message";
 	public static final String GENERIC_EXCEPTION_MESSAGE = "Please try after sometime!";
 	public static final String ERROR_CODE = "code";
